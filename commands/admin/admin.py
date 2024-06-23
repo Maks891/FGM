@@ -206,6 +206,22 @@ async def process_rassilka2(message, state: FSMContext):
   Получено: {ucount2:,}
   Не получено: {uerror2:,}''')
 
+async def resetlimit(message: types.Message):
+    user_id = message.from_user.id
+    if user_id not in [6888643375, 1688468160]:
+        return
+   
+    user_name = await get_name(user_id)
+    rwin, rloser = await win_luser()
+    url = await geturl(user_id, user_name)
+
+    cursor.execute(f"""UPDATE users SET per = 0 """)
+    conn.commit()
+
+    await message.answer(f'{url}, вы успешно обнулили лимиты времени {rwin}')
+    await new_log(f'#обнуление_лимитов\nАдмин {user_name} ({user_id}) обнулил лимит времени', 'issuance_limit')
+    
+
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
@@ -215,6 +231,7 @@ def reg(dp: Dispatcher):
     dp.register_callback_query_handler(RAM_clear, text='ram-clear')
     dp.register_message_handler(new_ads, lambda message: message.text == '⚙️ Изменить текст рекламы')
     dp.register_message_handler(lambda message, state: new_ads(message, state, type=1), state=new_ads_state.txt)
+    dp.register_message_handler(resetlimit, lambda message: message.text == '❗ Сбросить время лимитов ❗')
 
     dp.register_message_handler(rassilka, lambda message: message.text == '📍 Рассылка')
     dp.register_message_handler(process_rassilka, state=Mailing.mailing_text)
