@@ -26,7 +26,7 @@ titles = {
 # Обработка команды "Моя фракция"
 async def my_fraction(message: types.Message):
     user = message.from_user.username
-            await message.reply(f'Вы состоите в фракции "{fraction}"')
+            await message.reply(f'Вы состоите в фракции "{fractions}"')
             return
     await message.reply('Вы не состоите ни в одной фракции')
 
