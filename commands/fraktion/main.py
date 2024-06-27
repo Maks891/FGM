@@ -44,5 +44,5 @@ async def get_titles(message: types.Message):
 
 def reg(dp: Dispatcher):
         dp.register_message_handler(my_fraction, lambda message: message.text.lower().startswith('моя фракция'))
-        dp.register_message_handler(get_fraction, lambda message: message.text.lower().startswith('фракции'))
+        dp.register_message_handler(get_fractions, lambda message: message.text.lower().startswith('фракции'))
         dp.register_message_handler(get_titles, lambda message: message.text.lower().startswith('титулы'))
