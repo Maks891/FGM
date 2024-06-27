@@ -25,9 +25,11 @@ titles = {
 
 
 # Обработка команды "Фракции"
+
 async def get_fractions(message: types.Message):
-    fractions_list = '\n' fractions
+    fractions_list = '\n'.join([row[0] for row in fractions])
     await message.reply(f'Доступные фракции:\n{fractions_list}')
+
 # Обработка команды "Титулы"
 async def get_titles(message: types.Message):
     titles_list = '\n'.join([f'• {title}: {value}' for title, value in titles.items()])
