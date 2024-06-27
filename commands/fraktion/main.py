@@ -26,15 +26,13 @@ titles = {
 # Обработка команды "Моя фракция"
 async def my_fraction(message: types.Message):
     user = message.from_user.username
-    for fraction, members in fractions.items():
-        if user in members:
             await message.reply(f'Вы состоите в фракции "{fraction}"')
             return
     await message.reply('Вы не состоите ни в одной фракции')
 
 # Обработка команды "Фракции"
 async def get_fractions(message: types.Message):
-    fractions_list = '\n'.join([f'• {fraction}' for fraction in fractions.keys()])
+    fractions_list = '\n {fractions}'
     await message.reply(f'Доступные фракции:\n{fractions_list}')
 
 # Обработка команды "Титулы"
