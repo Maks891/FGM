@@ -26,8 +26,6 @@ titles = {
 
 # Обработка команды "Фракции"
 async def get_fractions(message: types.Message):
-    cursor.execute('SELECT name FROM fractions')
-    fractions = cursor.fetchall()
     fractions_list = '\n'.join([row[0] for row in fractions])
     await message.reply(f'Доступные фракции:\n{fractions_list}')
 # Обработка команды "Титулы"
