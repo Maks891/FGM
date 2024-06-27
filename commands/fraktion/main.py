@@ -23,12 +23,6 @@ titles = {
     'Генерал армии': 10
 }
 
-# Обработка команды "Моя фракция"
-async def my_fraction(message: types.Message):
-    user = message.from_user.username
-            await message.reply(f'Вы состоите в фракции "{fractions}"')
-            return
-    await message.reply('Вы не состоите ни в одной фракции')
 
 # Обработка команды "Фракции"
 async def get_fractions(message: types.Message):
@@ -41,6 +35,5 @@ async def get_titles(message: types.Message):
     await message.reply(f'Доступные титулы:\n{titles_list}')
 
 def reg(dp: Dispatcher):
-        dp.register_message_handler(my_fraction, lambda message: message.text.lower().startswith('моя фракция'))
         dp.register_message_handler(get_fractions, lambda message: message.text.lower().startswith('фракции'))
         dp.register_message_handler(get_titles, lambda message: message.text.lower().startswith('титулы'))
