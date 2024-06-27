@@ -32,6 +32,7 @@ MODULES = [
     'commands.entertaining.earnings.garden.potions',
     'commands.basic.transfer',
     'commands.main',
+    'commands.punishment'
 ]
 
 
