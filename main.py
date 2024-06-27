@@ -33,7 +33,7 @@ MODULES = [
     'commands.basic.transfer',
     'commands.main',
     'commands.punishment',
-    'commands.fraktion',
+    'commands.fraktion.main',
 ]
 
 
