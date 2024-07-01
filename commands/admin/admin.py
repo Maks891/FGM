@@ -77,7 +77,7 @@ async def admin_menu(message: types.Message):
         keyboard=[
             [types.KeyboardButton(text='📍 Рассылка'), types.KeyboardButton(text='🕹 Управление')],
             [types.KeyboardButton(text='✨ Промокоды'), types.KeyboardButton(text='📥 Выгрузка')],
-            [types.KeyboardButton(text='⚙️ Изменить текст рекламы')]
+            [types.KeyboardButton(text='⚙️ Изменить текст рекламы')], types.KeyboardButton(text='❗ Сбросить время лимитов ❗')
         ],
         resize_keyboard=True
     )
