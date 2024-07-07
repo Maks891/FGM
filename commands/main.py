@@ -43,4 +43,4 @@ async def geturl(id, txt):
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(on_start, commands=['start'])
-    dp.register_message_handler(yznat_cmd, ['узнать ид', 'узнать ID', 'ID'])
+    dp.register_message_handler(help_cmd, lambda message: message.text.lower().startswith(('узнать ид', 'узнать ID', 'ID')))
