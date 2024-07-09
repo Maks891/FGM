@@ -73,17 +73,12 @@ async def admin_menu(message: types.Message):
     if user_id not in cfg.admin:
         return
 
-    keyboard = types.ReplyKeyboardMarkup(
-        keyboard=[
-            [types.KeyboardButton(text='📍 Рассылка'), types.KeyboardButton(text='🕹 Управление')],
+    keyboard = types.ReplyKeyboardMarkup(keyboard=[
             [types.KeyboardButton(text='✨ Промокоды'), types.KeyboardButton(text='📥 Выгрузка')],
-            [types.KeyboardButton(text='⚙️ Изменить текст рекламы')], types.KeyboardButton(text='❗ Сбросить время лимитов ❗')]
-        ],
-        resize_keyboard=True
-    )
+            [types.KeyboardButton(text='⚙️ Изменить текст рекламы'), types.KeyboardButton(text='❗ Сбросить время лимитов ❗')],
+        resize_keyboard=True)
 
     await message.answer('<b>👮‍♂️ Админ меню:</b>', reply_markup=keyboard)
-
 
 async def control(message: types.Message):
     user_id = message.from_user.id
