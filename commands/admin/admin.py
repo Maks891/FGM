@@ -74,6 +74,7 @@ async def admin_menu(message: types.Message):
         return
 
     keyboard = types.ReplyKeyboardMarkup(keyboard=[
+            [types.KeyboardButton(text='📍 Рассылка')],
             [types.KeyboardButton(text='✨ Промокоды'), types.KeyboardButton(text='📥 Выгрузка')],
             [types.KeyboardButton(text='⚙️ Изменить текст рекламы'), types.KeyboardButton(text='❗ Сбросить время лимитов ❗')] 
         ],  # <-- Добавлена закрывающая скобка ']' 
