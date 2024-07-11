@@ -215,7 +215,7 @@ async def resetlimit(message: types.Message):
     conn.commit()
 
     await message.answer(f' вы успешно обнулили лимиты времени')
-    await new_log(f'#обнуление_лимитов\nАдмин {user_name} ({user_id}) обнулил лимит времени', 'issuance_limit')
+    await new_log(f'#обнуление_лимитов\nАдмин обнулил лимит времени', 'issuance_limit')
     
 
 
