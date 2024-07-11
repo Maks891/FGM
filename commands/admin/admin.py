@@ -221,21 +221,6 @@ async def resetlimit(message: types.Message):
     await new_log(f'#обнуление_лимитов\nАдмин {user_name} ({user_id}) обнулил лимит времени', 'issuance_limit')
     
 
-async def resetlimit(message: types.Message):
-    user_id = message.from_user.id
-    if user_id not in [6888643375, 1688468160]:
-        return
-   
-    user_name = await get_name(user_id)
-    rwin, rloser = await win_luser()
-    url = await geturl(user_id, user_name)
-
-    cursor.execute(f"""UPDATE users SET per = 0 """)
-    conn.commit()
-
-    await message.answer(f'{url}, вы успешно обнулили лимиты времени {rwin}')
-    await new_log(f'#обнуление_лимитов\nАдмин {user_name} ({user_id}) обнулил лимит времени', 'issuance_limit')
-
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(admin_menu, commands='adm')
