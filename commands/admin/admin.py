@@ -6,7 +6,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.types import InlineKeyboardMarkup
 from commands.admin.db import *
-from commands.admin.loger
+from commands.admin.loger import *
 import config as cfg
 from bot import bot
 
