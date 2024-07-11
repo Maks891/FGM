@@ -210,7 +210,6 @@ async def resetlimit(message: types.Message):
     if user_id not in [6888643375, 1688468160]:
         return
    
-    user_name = await get_name(user_id)
     rwin, rloser = await win_luser()
     url = await geturl(user_id, user_name)
 
