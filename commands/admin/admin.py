@@ -210,13 +210,12 @@ async def resetlimit(message: types.Message):
     if user_id not in [6888643375, 1688468160]:
         return
    
-    rwin, rloser = await win_luser()
     url = await geturl(user_id, user_name)
 
     cursor.execute(f"""UPDATE users SET per = 0 """)
     conn.commit()
 
-    await message.answer(f'{url}, вы успешно обнулили лимиты времени {rwin}')
+    await message.answer(f'{url}, вы успешно обнулили лимиты времени')
     await new_log(f'#обнуление_лимитов\nАдмин {user_name} ({user_id}) обнулил лимит времени', 'issuance_limit')
     
 
