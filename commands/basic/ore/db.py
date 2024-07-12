@@ -120,21 +120,21 @@ async def autoenergy():
     conn.commit()
 
 
-# async def autokursbtc():
-#     cursor.execute('SELECT kursbtc FROM sett')
-#     current_kurs = cursor.fetchone()
-#     if current_kurs is None:
-#         cursor.execute('INSERT INTO sett (ads, kursbtc) VALUES (?, ?)', ('', 40000))
-#         current_kurs = 40000
-#     else:
-#         current_kurs = current_kurs[0]
-#
-#     random_change = random.randint(1, 3)
-#     s = random.choice([-1, 1])
-#     new_kurs = current_kurs + (s * random_change)
-#
-#     cursor.execute('UPDATE sett SET kursbtc = ?', (new_kurs,))
-#     conn.commit()
+ async def kursyen():
+     cursor.execute('SELECT kursyen FROM sett')
+     current_kurs = cursor.fetchone()
+     if current_kurs is None:
+         cursor.execute('INSERT INTO sett (ads, kursyen) VALUES (?, ?)', ('', 120000))
+         current_kurs = 120000
+     else:
+         current_kurs = current_kurs[0]
+
+     random_change = random.randint(1, 3)
+     s = random.choice([-1, 1])
+     new_kurs = current_kurs + (s * random_change)
+
+     cursor.execute('UPDATE sett SET kursyen = ?', (new_kurs,))
+     conn.commit()
 
 
 async def autokursbtc_new():
