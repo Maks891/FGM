@@ -141,6 +141,10 @@ async def get_balance(user_id):
     i = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
     return int(Decimal(i))
 
+async def get_yen(user_id):
+    i = cursor.execute('SELECT yen FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
+    return int(Decimal(i))
+
 
 async def getlimitdb(message):
     user_id = message.from_user.id
