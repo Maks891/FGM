@@ -33,10 +33,10 @@ async def autocommands2():
 
 
 async def autocommands3():
-    await autokursbtc(120000)
+    # await autokursbtc(120000)
     # await autokursbtc() изменение курса на рандом число
     # Сейчас курс идет за настоящим BTC
-    # await autokursbtc_new()
+    await autokursbtc_new()
 
 
 async def autocommands4():
