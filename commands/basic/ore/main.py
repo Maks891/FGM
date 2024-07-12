@@ -31,6 +31,34 @@ async def sellbtc(message: types.Message):
     else:
         await message.answer(f'{url}, вы не можете продать столько BTC {lose}')
 
+async def sellyen(message: types.Message):
+    user_id = message.from_user.id
+    yen = await get_yen(user_id)
+    url = await url_name(user_id)
+    win, lose = await win_luser()
+
+    try:
+        summ_yen = int(message.text.split()[2])
+    except:
+        summ_yen = yen  
+    summ_yen = Decimal(summ_yen)
+
+    kurs = await getkurs()
+    summ = summ_yen * kurs
+    summ2 = '{:,}'.format(summ).replace(',', '.')
+    summ_yen2 = '{:,}'.format(summ_yen).replace(',', '.')
+
+    if yen >= summ_yen:
+        if btc - summ_yen >= 0 and yen > 0:
+            await sellyen_db(summ, summ_yen, user_id)
+            await message.answer(f'{url}, вы успешно продали {summ_yen2} йен за {summ2}$ {win}')
+        else:
+            await message.answer(f'{url}, нельзя продавать отрицательно или же нулевое количество йен {lose}')
+    else:
+        await message.answer(f'{url}, вы не можете продать столько йен {lose}')
+
+
+
 
 async def buybtc(message: types.Message):
     user_id = message.from_user.id
@@ -61,6 +89,8 @@ async def buybtc(message: types.Message):
         await message.answer(f'{url}, у вас недостаточно денег для покупки BTC {lose}')
 
 
+
+    
 async def btc_kurs(message: types.Message):
     user_id = message.from_user.id
     url = await url_name(user_id)
