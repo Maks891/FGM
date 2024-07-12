@@ -32,6 +32,14 @@ async def sellbtc_db(summ, summ_btc, user_id):
     cursor.execute('UPDATE users SET btc = btc - ? WHERE user_id = ?', (int(summ_btc), user_id))
     conn.commit()
 
+async def sellyen_db(summ, summ_yen, user_id):
+    balance = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
+    summ = Decimal(balance) + Decimal(summ)
+    cursor.execute('UPDATE users SET balance = ? WHERE user_id = ?', (str(summ), user_id))
+    cursor.execute('UPDATE users SET yen = yen - ? WHERE user_id = ?', (int(summ_yen), user_id))
+    conn.commit()
+
+
 
 async def bybtc_db(summ, summ_btc, user_id):
     balance = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
