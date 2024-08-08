@@ -112,6 +112,13 @@ async def sellrrating_db(summ, summ_r, user_id):
     cursor.execute('UPDATE users SET rating = rating - ? WHERE user_id = ?', (int(summ_r), user_id))
     conn.commit()
 
+async def sellyen_db(summ, summ_r, user_id):
+    balance = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
+    summ = Decimal(balance) + Decimal(summ)
+    cursor.execute('UPDATE users SET balance = ? WHERE user_id = ?', (str(summ), user_id))
+    cursor.execute('UPDATE users SET yen = yen - ? WHERE user_id = ?', (int(summ_r), user_id))
+    conn.commit()
+
 
 async def getcorn_garden(id):
     cursor.execute('SELECT corn FROM users WHERE user_id = ?', (id,))
