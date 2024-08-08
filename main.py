@@ -34,7 +34,7 @@ MODULES = [
     'commands.main',
     'commands.punishment',
     'commands.fraktion.main',
-    'commands.hunting'
+    'commands.hunting',
 ]
 
 
