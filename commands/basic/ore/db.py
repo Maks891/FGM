@@ -104,6 +104,13 @@ async def getrrating(message):
     i = cursor.fetchone()[0]
     return i
 
+async def getyenn(message):
+    user_id = message.from_user.id
+    cursor.execute('SELECT yen FROM users WHERE user_id = ?', (user_id,))
+    i = cursor.fetchone()[0]
+    return i
+
+
 
 async def sellrrating_db(summ, summ_r, user_id):
     balance = cursor.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()[0]
