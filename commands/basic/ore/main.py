@@ -164,6 +164,7 @@ async def buy_ratting(message: types.Message):
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(sellbtc, lambda message: message.text.lower().startswith('продать биткоин'))
+    dp.register_message_handler(sellyen, lambda message: message.text.lower().startswith('продать йен'))
     dp.register_message_handler(buybtc, lambda message: message.text.lower().startswith('купить биткоин'))
     dp.register_message_handler(btc_kurs, lambda message: message.text.lower().startswith('курс биткоина'))
     dp.register_message_handler(rrating_cmd, lambda message: message.text.lower() == 'рейтинг')
