@@ -73,7 +73,7 @@ async def sellyen(message: types.Message):
     except:
         summ_f = f
 
-    summ_r = Decimal(summ_r)
+    summ_f = Decimal(summ_f)
 
     kurs = 1_000_000_000  # сумма за 1 рейтинг
     summ = summ_f * kurs
