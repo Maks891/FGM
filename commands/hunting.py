@@ -88,5 +88,5 @@ async def game(message: types.Message):
 	await bot.edit_message_text(chat_id=msg.chat.id, message_id=msg.message_id, text=txt)
 
 
-def register_handlers(dp: Dispatcher):
+def reg(dp: Dispatcher):
     dp.register_message_handler(game, lambda message: message.text.lower().startswith('охота'))
