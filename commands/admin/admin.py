@@ -26,7 +26,7 @@ class Mailing(StatesGroup):
 
 async def new_ads(message, state: FSMContext, type=0):
     user_id = message.from_user.id
-    if user_id not in [5244814453, 6888643375]:
+    if user_id not in admin.cfg:
         return
 
     if type == 0:
@@ -58,7 +58,7 @@ async def new_ads(message, state: FSMContext, type=0):
 
 async def unloading(message):
     user_id = message.from_user.id
-    if user_id not in [5244814453, 6888643375]:
+    if user_id not in admin.cfg:
         return
 
     if message.chat.type != 'private':
@@ -71,7 +71,7 @@ async def unloading(message):
 
 async def admin_menu(message: types.Message):
     user_id = message.from_user.id
-    if user_id not in [5244814453, 6888643375]:
+    if user_id not in admin.cfg:
         return
 
     keyboard = types.ReplyKeyboardMarkup(keyboard=[
@@ -87,7 +87,7 @@ async def admin_menu(message: types.Message):
 
 async def control(message: types.Message):
     user_id = message.from_user.id
-    if user_id not in [5244814453, 6888643375]:
+    if user_id not in admin.cfg:
         return
 
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -107,7 +107,7 @@ def sizeof_fmt(num):
 
 async def RAM_control(message: types.Message):
     user_id = message.from_user.id
-    if user_id not in [5244814453, 6888643375]:
+    if user_id not in admin.cfg:
         return
 
     keyboard = types.InlineKeyboardMarkup()
@@ -127,7 +127,7 @@ async def RAM_control(message: types.Message):
 
 async def RAM_clear(call: types.CallbackQuery):
     user_id = call.from_user.id
-    if user_id not in [5244814453, 6888643375]:
+    if user_id not in admin.cfg:
         return
 
     global earning_msg, help_msg, bonus_time, kazna_time
@@ -208,7 +208,7 @@ async def process_rassilka2(message, state: FSMContext):
 
 async def resetlimit(message: types.Message):
     user_id = message.from_user.id
-    if user_id not in [6888643375, 1688468160, 5244814453]:
+    if user_id not in admin.cfg:
         return
 
     cursor.execute(f"""UPDATE users SET per = 0 """)
