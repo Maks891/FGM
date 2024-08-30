@@ -193,17 +193,17 @@ async def activ_promo(message: types.Message):
 
 
 def reg(dp: Dispatcher):
-    dp.register_message_handler(promo_menu, lambda message: message.text == '✨ Промокоды', [6888643375, 1688468160, 5244814453]=True)
-    dp.register_message_handler(admin_menu, lambda message: message.text == '👮 Вернуться в админ меню', [6888643375, 1688468160, 5244814453]=True)
-    dp.register_message_handler(promo_info, lambda message: message.text == 'ℹ️ Промо инфо', [6888643375, 1688468160, 5244814453]=True)
+    dp.register_message_handler(promo_menu, lambda message: message.text == '✨ Промокоды', [6888643375, 1688468160, 5244814453]==True)
+    dp.register_message_handler(admin_menu, lambda message: message.text == '👮 Вернуться в админ меню', [6888643375, 1688468160, 5244814453]==True)
+    dp.register_message_handler(promo_info, lambda message: message.text == 'ℹ️ Промо инфо', [6888643375, 1688468160, 5244814453]==True)
     dp.register_message_handler(lambda message, state: promo_info(message, state, type='finish'), state=promo_info_state.name)
 
-    dp.register_message_handler(new_promo, lambda message: message.text == '📖 Создать промо', [6888643375, 1688468160, 5244814453]=True)
+    dp.register_message_handler(new_promo, lambda message: message.text == '📖 Создать промо', [6888643375, 1688468160, 5244814453]==True)
     dp.register_message_handler(lambda message, state: new_promo(message, state, type='txt'), state=new_promo_state.txt)
     dp.register_message_handler(lambda message, state: new_promo(message, state, type='summ'), state=new_promo_state.name)
     dp.register_message_handler(lambda message, state: new_promo(message, state, type='activ'), state=new_promo_state.summ)
     dp.register_message_handler(lambda message, state: new_promo(message, state, type='finish'), state=new_promo_state.activ)
 
-    dp.register_message_handler(dell_promo, lambda message: message.text == '🗑 Удалить промо', [6888643375, 1688468160, 5244814453]=True)
+    dp.register_message_handler(dell_promo, lambda message: message.text == '🗑 Удалить промо', [6888643375, 1688468160, 5244814453]==True)
     dp.register_message_handler(lambda message, state: dell_promo(message, state, type='finish'), state=dell_promo_state.name)
     dp.register_message_handler(activ_promo, lambda message: message.text.lower().startswith('промо'))
