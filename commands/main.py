@@ -1,4 +1,4 @@
-from aiogram import Dispatcher, types
+from aiogram import Dispatcher, types, bot
 from commands.db import reg_user
 from assets import kb
 import random
