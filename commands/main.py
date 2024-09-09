@@ -44,7 +44,7 @@ async def geturl(id, txt):
 
 async def report(message: types.Message):
   try:
-    if message.text == '/report' or message.text == '/r' or not message.reply_to_message:
+    if message.text == '/report' or not message.reply_to_message:
       await bot.send_message(message.chat.id, '''Вот информация за систему репортов ⛔️
 
 ⚠️ | Правила по использованию репортов
@@ -85,5 +85,5 @@ async def report(message: types.Message):
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(on_start, commands=['start'])
-    dp.register_message_handler(report, commands=['r'])
+    dp.register_message_handler(report, commands=['report'])
     dp.register_message_handler(yznat_cmd, lambda message: message.text.lower().startswith(('узнать ид', 'узнать ID', 'ID')))
