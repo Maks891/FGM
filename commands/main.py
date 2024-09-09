@@ -44,9 +44,9 @@ async def geturl(id, txt):
 
 
 async def report(message: types.Message):
-  try:
-    if message.text == '/report' or message.text == '/r' or not message.reply_to_message:
-      await bot.send_message(message.chat.id, '''Вот информация за систему репортов ⛔️
+    try:
+        if message.text == '/report' or message.text == '/r' or not message.reply_to_message:
+            await bot.send_message(message.chat.id, '''Вот информация за систему репортов ⛔️
 
 ⚠️ | Правила по использованию репортов
      [1️⃣] Материться, оскорблять кого-либо, проявлять неуважение к администрации и тому подобное.
@@ -63,30 +63,31 @@ async def report(message: types.Message):
 [⛔️] | Прошу вас соблюдать правила отправки репорта
 
 ''')
-    else:
-      members = await message.chat.get_member(message.reply_to_message.from_user.id)
-      info = await bot.get_chat_member(message.chat.id, message.from_user.id)
-      report = message.text.replace('/r ', '')
-      report = report.replace('/report ', '')
-      admins = await bot.get_chat_administrators('@' + message.chat.username)
-      send = 0
-      for admin in admins:
-        if admin.user.username != 'Group_Moder_bot':
-          try:
-            await bot.send_message(admin.user.id, f'[📬] | Репорт по причине: ' + str(report) + f'\n\nhttps://t.me/{message.chat.username}/{message.reply_to_message.message_id}')
-          except:
-            pass
-          send += 1
+        else:
+            members = await message.chat.get_member(message.reply_to_message.from_user.id)
+            info = await bot.get_chat_member(message.chat.id, message.from_user.id)
+            report = message.text.replace('/r ', '')
+            report = report.replace('/report ', '')
+            admins = await bot.get_chat_administrators('@' + message.chat.username)
+            send = 0
+            for admin in admins:
+                if admin.user.username != 'Group_Moder_bot':
+                    try:
+                        await bot.send_message(admin.user.id, f'[📬] | Репорт по причине: ' + str(report) + f'\n\nhttps://t.me/{message.chat.username}/{message.reply_to_message.message_id}')
+                    except:
+                        pass
+                    send += 1
 
-      if send == 0:
-        await bot.send_message(message.chat.id, '[👮] | Админы не оповещены, для отправки им репортов надо чтобы они запустили меня в лс!')
-      else:
-        await bot.send_message(message.chat.id, '''[✅] | ваш репорт был успешно отправлен администрации''')
-  except:
-    pass
+            if send == 0:
+                await bot.send_message(message.chat.id, '[👮] | Админы не оповещены, для отправки им репортов надо чтобы они запустили меня в лс!')
+            else:
+                await bot.send_message(message.chat.id, '''[✅] | ваш репорт был успешно отправлен администрации''')
+    except Exception as e:
+        print(e)
 
 
 def reg(dp: Dispatcher):
     dp.register_message_handler(on_start, commands=['start'])
     dp.register_message_handler(report, commands=['r'])
-    dp.register_message_handler(yznat_cmd, lambda message: message.text.lower().startswith(('узнать ид', 'узнать ID', 'ID')))
+    dp.register_message_handler(yznat_cmd, lambda message: message.text.lower().startswith(('узнать ид', 'узнать ID', 'ID'))) 
+
