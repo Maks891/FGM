@@ -216,6 +216,9 @@ async def resetlimit(message: types.Message):
 
     await message.answer(f' вы успешно обнулили лимиты времени')
     await new_log(f'#обнуление_лимитов\nАдмин обнулил лимит времени', 'issuance_limit')
+
+async def remove_keyboard(message: types.Message):
+    await message.reply('Клавиатура удалена', reply_markup=types.ReplyKeyboardRemove())
     
 
 
@@ -225,6 +228,7 @@ def reg(dp: Dispatcher):
     dp.register_message_handler(control, lambda message: message.text == '🕹 Управление')
     dp.register_message_handler(RAM_control, lambda message: message.text == '💽 ОЗУ')
     dp.register_callback_query_handler(RAM_clear, text='ram-clear')
+    dp.register_message_handler(remove_keyboard, lambda message: message.text.lower().startswith('скрыть кб'))
     dp.register_message_handler(new_ads, lambda message: message.text == '⚙️ Изменить текст рекламы')
     dp.register_message_handler(lambda message, state: new_ads(message, state, type=1), state=new_ads_state.txt)
     dp.register_message_handler(resetlimit, lambda message: message.text == '❗ Сбросить время лимитов ❗')
